@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import TrackHistory from './trackHistory';
+import {FaAngleDoubleRight, FaCar, FaGlobe, FaSearch, FaYoutube} from 'react-icons/fa';
 
 const PageCard = (
 
@@ -67,24 +68,28 @@ const PageCard = (
             <h1 className="m-auto text-4xl font-bold p-5">Track your Ride</h1>
             <Image src="/safe.png" alt="car" height={200} width={200} />
           </div>
-          <input
-            type="text"
-            className="form-control text-center text-black font-bold py-3 px-10 rounded text-lg"
-            placeholder="Enter plate number"
-            value={plateNumber}
-            onChange={(e) => setPlateNumber(e.target.value)}
-          />
+          <div className='flex align-center text-black gap-2 bg-white rounded-md p-2 w-fit'>
+            <FaSearch className='icons' size={40} />
+            <input
+              type="text"
+              className="form-control text-center text-black font-bold py-3 px-10 rounded text-lg"
+              placeholder="Enter plate number "
+              value={plateNumber}
+              onChange={(e) => setPlateNumber(e.target.value)}
+            />
+            <FaCar className='icons' size={40} />
+          </div>
           <button
             onClick={handleClick}
-            className="bg-yellow-500 hover:bg-yellow-700 font-bold py-3 text-black px-10 rounded text-lg"
+            className="bg-yellow-500 hover:bg-yellow-700 font-bold py-3 text-black px-10 rounded text-lg flex items-center justify-center gap-2"
           >
-            Track Now
+            Track Now <FaAngleDoubleRight className='icons' size={20} />
           </button>
         </div>
       </section>
       <section className='p-10'>
         {sessionData.user.email}
-        <h2 className='text-xl font-bold'>Track history</h2>
+        <h2 className='text-xl font-bold'>Track history <FaGlobe className='icons' /></h2>
       </section>
     </div>
   )
