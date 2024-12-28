@@ -20,6 +20,7 @@ const getDriver = async () => {
             throw new Error('Network response was not ok');
         }
         const data = await response.json();
+
         console.log(id,data);
         return data;
     }
@@ -28,7 +29,15 @@ const getDriver = async () => {
     }
 }
     const driver = await getDriver();
-    console.log(driver);
+
+    if(!driver.driver){
+            
+        return (
+            <div>
+                <h1>Driver not found</h1>
+            </div>
+        )
+    }
     return (
         <div className="bg-cover bg-no-repeat bg-center bg-fixed text-white flex-flex-col items-center justify-center"   style={{backgroundImage: `url("/wallpaper2.jpg")`}}>
             <section className="bg-blue-800 p-4 rounded-lg ">
