@@ -2,20 +2,120 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.nav {
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
 }
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+.nav-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 1rem;
+}
+.nav-links a:hover {
+    color: #f2c94c;
+}
+.nav-links a.active {
+    color: #f2c94c;
+}
+.nav-links button {
+    background-color: #f2c94c;
+    color: #333;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+.nav-links button:hover {
+    background-color: #fff;
+    color: #f2c94c;
+}
+.delete-btn {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+.btn {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+.btn:hover {
+    background-color: #949090;
+    color: #333;
+}
+.btn-danger {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+.btn-danger:hover {
+    background-color: #fff;
+    color: red;
+}
+.form-control {
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid #ccc;
+}
+.form-control:focus {
+    outline: none;
+    border-color: #f2c94c;
+}
+.form-group {
+    margin-bottom: 1rem;
+}
+.error {
+    color: red;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+}
+.success {
+    color: green;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+}
+.card {
+    background-color: #fff;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+}
+.card-header {
+    background-color: #f2c94c;
+    color: #333;
+    border-radius: 0.5rem 0.5rem 0 0;
+    padding: 0.5rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.card-body {
+    padding: 1rem;
+}
+.card-footer {
+    background-color: #f2c94c;
+    color: #333;
+    border-radius: 0 0 0.5rem 0.5rem;
+    padding: 0.5rem;
+    font-size: 1rem;
 }
