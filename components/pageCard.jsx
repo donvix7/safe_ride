@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
@@ -85,7 +85,6 @@ const PageCard = (
       <section className='p-10'>
         {sessionData.user.email}
         <h2 className='text-xl font-bold'>Track history</h2>
-        <TrackHistory userId = {sessionData.user.email} />
       </section>
     </div>
   )
