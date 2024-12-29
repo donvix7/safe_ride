@@ -4,6 +4,7 @@ import { NextAuthOptions } from "@/app/api/auth/[...nextauth]/options";
 import Image from "next/image";
 import Link from "next/link";
 import { FaAngleRight, FaList } from "react-icons/fa";
+import ReviewForm from "@/components/ReviewForm";
 
 
 export default async function DriverProfile({params}) {
@@ -39,7 +40,7 @@ const getDriver = async () => {
     }
     return (
         <div className="bg-cover bg-no-repeat bg-center bg-fixed text-white flex-flex-col items-center justify-center"   style={{backgroundImage: `url("/wallpaper2.jpg")`}}>
-            <section className="bg-blue-800 p-4 rounded-lg ">
+            <section className="p-4 rounded-lg backdrop-blur-xl bg-blue/30 ">
                 <Link href="/" className="font-bold text-lg flex gap-2 items-center">
                     <Image src="/safe.png" alt="logo" height={100} width={100} /> Safe Ride.
 
@@ -77,15 +78,9 @@ const getDriver = async () => {
                 </div>
                 <div className="flex  flex-col p-4 gap-4">
 
-                    <h1 className="font-bold ">Reviews</h1>
-                    <form>
-                    <textarea placeholder="Write an honest review" className="text-black form-control rounded-lg p-4 w-full"></textarea>
-
-                    <button className="bg-yellow-500 flex gap-2 items-center rounded-lg py-4 px-8 font-bold text-white align-self-left w-fit">Send Review<FaAngleRight className='icons' size={20} /></button>
-
-                    </form>
-
-                    <button className="bg-yellow-500 flex gap-2 items-center rounded-lg py-4 px-8 font-bold text-white w-fit mx-auto">View Reviews<FaList className='icons' size={20} /></button>
+                    <h1 className="font-bold ">Review</h1>
+                    
+                    <ReviewForm id = {id} />
                 </div>
             </section>
             <EmergencyButton user = {user} id = {id} />

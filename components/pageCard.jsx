@@ -55,10 +55,10 @@ const PageCard = (
   }
   else {
   return (
-    <div className='flex flex-col gap-4  min-h-screen text-white text-sm bg-blue-950 bg-cover  bg-no-repeat bg-center' style={{ backgroundImage: `url("wallpaper2.jpg")` }}>
-      <section className='bg-blue-800 rounded px-10 py-5'>
-        <Link href={`/editProfile/${sessionData.user.email}`}>
-          <Image src="/saferide.png" alt="logo" height={50} width={50} />
+    <div className='flex flex-col gap-4  min-h-screen text-white text-sm bg-blue-950 bg-cover bg-no-repeat bg-center bg-fixed'  style={{backgroundImage: `url("/wallpaper2.jpg")`}}>
+      <section className=' rounded-lg px-10 py-5 backdrop-blur-xl bg-blue/30'>
+        <Link href={`/editProfile/${sessionData.user.email}`} className='flex items-right  w-fit align-self-right'>
+          <Image src="/saferide.png" alt="logo" height={50} width={50} className='rounded-full'/>
         </Link>
         <div className='p-5 flex flex-col gap-4 items-center justify-center w-full'>
           <h1 className="text-xl font-bold text-center">Welcome {sessionData.user.email}!</h1> {/* Include user's name in the welcome message */}
@@ -88,8 +88,7 @@ const PageCard = (
         </div>
       </section>
       <section className='p-10'>
-        {sessionData.user.email}
-        <h2 className='text-xl font-bold'>Track history <FaGlobe className='icons' /></h2>
+        <h2 className='text-xl font-bold flex items-center gap-2'>Track history <FaGlobe className='icons' /></h2>
       </section>
     </div>
   )
