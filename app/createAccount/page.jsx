@@ -29,18 +29,18 @@ const page = () => {
                     'Content-Type': 'application/json'  
                 },
                 body: JSON.stringify({
-                   email: email,
-                   password: password,
+                   email,
+                   password,
                 })
                 
             });
 
-            if(response.ok){
+            if(!response){
                 alert('user added successfully');
                 router.push('/api/auth/signin');
             }
             else{
-                alert('Error adding vehicle');
+                alert('Error adding user');
             }
         }
         catch(error){

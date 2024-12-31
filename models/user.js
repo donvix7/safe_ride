@@ -5,14 +5,14 @@ const userSchema = new Schema(
             
             name:{
                 type: String,
-                match: [/^(?=.{8,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/, "Username invalid, it should contain 8-20 alphanumeric letters and be unique!"],
-                default: "default",
+                //match: [/^(?=.{8,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/, "Username invalid, it should contain 8-20 alphanumeric letters and be unique!"],
+                //default: "default",
                 unique:[true, "Username already exists"],
                 },
             email:{
                 type: String,
+                required: [true, "Email is required"],
                 unique:[true, "Email already exists"],
-                default: "default",
                 match: [/\S+@\S+\.\S+/, "Please enter a valid email address"],
             },
             
@@ -29,7 +29,6 @@ const userSchema = new Schema(
             phone: {
                 type: String,
                 default: "default",
-                match: [/^[0-9]{10}$/, "Phone number should be 10 digits"],
             },
             tracked: {
                 type: Array,

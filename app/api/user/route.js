@@ -2,24 +2,29 @@ import User from "@/models/user";
 import connectToDb from "@/utils/connection";
 import { NextResponse } from "next/server";
 
+import bcrypt from 'bcrypt';
 
 export async function POST(request) {
     const {email, password} = await request.json();  
-    console.log(email, password)
     await connectToDb();
 
     try {
-            const newUser = new User({email, password});
-        
-            await newUser.save();
-            return NextResponse.json({message:"User added successfully"}, {status:201})
-        
-    }
-    catch (error) {
-        return NextResponse.json({message:error.message}, {status:400})
-    }
+        const user = await User.findOne({email: email});
+        if (user) {
+            return NextResponse.json({message: "User already exists"}, {status: 400});
+        }
 
+        const hashedPassword = await bcrypt.hash(password, 10);
+        const newUser = new User({email, password: hashedPassword});
 
+        await newUser.save();
+        console.log(newUser);
+        return NextResponse.json({message: "User added successfully"}, {status: 201});
+        
+    } catch (error) {
+        console.error(error); // Log the error for debugging
+        return NextResponse.json({message: error.message}, {status: 400});
+    }
 }
 
 
@@ -38,11 +43,22 @@ export async function GET() {
 }
 
 export async function DELETE(request) {
-    const id = request.nextUrl.searchParams.get("id");
+   
     await connectToDb();
-    const user = await User.findByIdAndDelete(id);
-    if (!user) {
-        return NextResponse.json({message: "User not found"}, {status: 404});
+    try {
+        const user = await User.find();
+
+        if (!user) {
+            return NextResponse.json({message: "User not found"}, {status: 404});
+        }
+
+        await User.deleteMany({});
+
+        return NextResponse.json({message: "User deleted successfully"}, {status: 200});
+
+
     }
-    return NextResponse.json({message: "User deleted"}, {status: 200});
+    catch (error) {
+        return NextResponse.json({message: "Error deleting user", error: error.message}, {status: 500});
+    }
 }

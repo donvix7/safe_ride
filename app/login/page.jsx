@@ -18,10 +18,10 @@ const page = () => {
         </div>
         <form action="" onSubmit={handleSubmit} className='form flex flex-col justify-center max-w-lg mx-auto mt-10  gap-4 p-4'>
             <input type="text"
-             className='form-control' 
+             className='form-control text-black' 
              placeholder="email" />
             <input type="password"
-             className='form-control' 
+             className='form-control text-black' 
              placeholder="password" />
             <button type='submit' className=' bg-yellow-500 text-white font-bold py-2 px-20 rounded-lg'>Sign in</button>
             <Link href='/createAccount'className='text-gray-300 font-bold text-sm hover:text-green-500'>Create new account</Link>

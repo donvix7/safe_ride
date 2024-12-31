@@ -31,7 +31,7 @@ export default function ReviewForm({id}) {
 
     useEffect(() => {
         getReviews();
-    }, [review]);
+    }, [handleSubmit]);
 
   return <div className="flex flex-col gap-4">
     <form onSubmit={handleSubmit} className="form flex flex-col gap-4">

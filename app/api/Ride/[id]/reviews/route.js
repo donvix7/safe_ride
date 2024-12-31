@@ -27,6 +27,8 @@ export async function GET(request, {params}) {
 export async function POST(request, {params}) {
     const {id} = params
     const {review} = await request.json();  
+
+    console.log(review);
     await connectToDb();
     const driver = await Driver.findOne({plateNumber:id});
     // Check if the post exists and return an error if it does not
