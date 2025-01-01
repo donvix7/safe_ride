@@ -58,8 +58,61 @@ export const NextAuthOptions = {
     
 ],
 
-callbacks: {
+callbacks : {
+    async jwt({token, user, session}) {
+        console.log("jwt callback",{token, user, session});
+
+        if(user) {
+            return {
+                ...token,
+                id: user.id,
+
+            };
+        }
+        return token;
+    },
+    async session({ session, token }) {
+        console.log("session callback", { token, session });
+        
+        return {
+            ...session,
+            user: {
+                ...session.user,
+                id: token.id, // Ensure that token.id exists
+                name: token.name // Ensure that token.name exists
+            },
+        };
+    },
+    async signIn({ credentials }) {
+        try {
+            await connectToDb(); // Ensure it connects only once if used elsewhere
     
+            // Check for existing user by either email or username
+            let user = await User.findOne({
+                $or: [
+                    { email: credentials?.email },
+                    { username: credentials?.username?.toLowerCase() }
+                ]
+            });
+    
+            // If the user does not exist, create a new one
+            if (!user) {
+                user = await User.create({
+                    email: profile?.email,
+                    username: profile?.username?.toLowerCase(), // Ensure username is stored in lowercase
+                    image: profile?.picture
+                });
+            }
+    
+            // You might want to add any necessary user properties to the session here
+            return user; // Returning the user object for integration with NextAuth session
+        } catch (error) {
+            console.error("Error during sign-in:", error);
+            return null; // Indicate an error occurred
+        }
+    
+
+    }
 }
 };
 

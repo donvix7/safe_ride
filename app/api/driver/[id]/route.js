@@ -1,5 +1,4 @@
 import Driver from "@/models/driver";
-import Post from "@/models/post";
 import connectToDb from "@/utils/connection";
 import { NextResponse } from "next/server";
 
@@ -28,7 +27,7 @@ export async function GET(request, {params}) {
 export async function DELETE(request) {
     const id = request.nextUrl.searchParams.get("id");
     await connectToDb();
-    const post = await Post.findOne({_id:id});
+    const post = await Driver.findOne({_id:id});
     console.log(post);
 
     await Post.findByIdAndDelete(id);

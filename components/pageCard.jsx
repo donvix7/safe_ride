@@ -3,10 +3,11 @@
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { useSession } from 'next-auth/react';
+import { signOut, useSession } from 'next-auth/react';
 import Image from 'next/image';
 import TrackHistory from './trackHistory';
 import {FaAngleDoubleRight, FaCar, FaGlobe, FaSearch, FaYoutube} from 'react-icons/fa';
+import { getServerSession } from 'next-auth';
 
 const PageCard = (
 
@@ -15,6 +16,8 @@ const PageCard = (
   const router = useRouter();
   const { data: sessionData, status } = useSession(); // Destructure sessionData and status
 
+  //const {session} = getServerSession(NextAuthOptions);
+  
   const handleClick = async () => {
     if (!plateNumber) {
       alert("Please enter a plate number.");

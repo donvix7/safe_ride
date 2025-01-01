@@ -9,24 +9,21 @@ export async function POST(request) {
     await connectToDb();
 
     try {
-        const user = await User.findOne({email: email});
-        if (user) {
-            return NextResponse.json({message: "User already exists"}, {status: 400});
-        }
 
-        const hashedPassword = await bcrypt.hash(password, 10);
-        const newUser = new User({email, password: hashedPassword});
-
+        const newUser = new User({email, password});
         await newUser.save();
-        console.log(newUser);
-        return NextResponse.json({message: "User added successfully"}, {status: 201});
-        
-    } catch (error) {
-        console.error(error); // Log the error for debugging
-        return NextResponse.json({message: error.message}, {status: 400});
+        return NextResponse.json({message:"User added successfully"}, {status:201})
+    
     }
-}
+    catch (error) {
+        console.log(error);
 
+        return NextResponse.json({message:error.message}, {status:400});
+
+    }
+
+
+}
 
 export async function GET() {
     
