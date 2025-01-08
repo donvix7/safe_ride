@@ -6,11 +6,13 @@ import bcrypt from 'bcrypt';
 
 export async function POST(request) {
     const {email, password} = await request.json();  
+
     await connectToDb();
 
     try {
 
         const newUser = new User({email, password});
+        console.log(newUser);
         await newUser.save();
         return NextResponse.json({message:"User added successfully"}, {status:201})
     

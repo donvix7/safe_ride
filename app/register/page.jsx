@@ -59,7 +59,7 @@ export default function RegisterPage() {
         
     }
   return (
-    <form className='form mt-5 flex flex-col gap-3 p-10 '
+    <form className='form mt-5 flex flex-col gap-3 p-10 w-sm max-w-md mx-auto'
         onSubmit={handleSubmit}>
         <h2 className='text-2xl font-bold'>Add Vehicle</h2>
         <input 
@@ -77,11 +77,11 @@ export default function RegisterPage() {
         <input 
         value={pointA}
         onChange={(e) => setPointA(e.target.value)} 
-        type="text" className='form-control' placeholder='Enter Vehicle route'/>
+        type="text" className='form-control' placeholder='Enter Vehicle route1'/>
         <input 
         value={pointB}
         onChange={(e) => setPointB(e.target.value)} 
-        type="text" className='form-control' placeholder='Enter Vehicle route'/>
+        type="text" className='form-control' placeholder='Enter Vehicle route2'/>
         <input 
         value={model}
         onChange={(e) => setModel(e.target.value)} 
