@@ -35,7 +35,7 @@ const page = () => {
                 
             });
 
-            if(response.ok){
+            if(!response){
                 alert('user added successfully');
                 router.push('/api/auth/signin');
             }
