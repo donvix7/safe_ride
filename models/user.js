@@ -26,6 +26,11 @@ const userSchema = new Schema(
                 enum: ["default.jpg", "default2.jpg", "default3.jpg"],
                 default: "default.jpg",
             },
+            nextOfKin : {
+                type: String,
+                default: "default",
+            },
+
             phone: {
                 type: String,
                 default: "default",
@@ -34,7 +39,7 @@ const userSchema = new Schema(
                 type: Array,
                 default: [],
             },
-            adress: {
+            address: {
                 type: String,
                 default: "default",
             },

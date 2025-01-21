@@ -1,3 +1,4 @@
+import { sendEmail } from "@/lib/resend";
 import Driver from "@/models/driver";
 import Emergency from "@/models/Emergency";
 import Post from "@/models/post";
@@ -8,11 +9,19 @@ import { NextResponse } from "next/server";
 
 export async function POST(request) {
     const {user, plateNumber} = await request.json();  
+
     console.log(user, plateNumber)
 
     const driver = await Driver.findOne({plateNumber: plateNumber});
 
+    const mail = JSON.stringify(driver);
+
+    const subject = "Emergency Notification !!!";
+
+
     await connectToDb();
+
+    await sendEmail({subject, mail});
 
     try {
             const newEmergency = new Emergency({user, driver});

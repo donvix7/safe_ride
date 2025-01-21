@@ -3,7 +3,8 @@
 import { useRouter } from 'next/navigation';
 import React from 'react';
 
-const EmergencyButton = ({user, id}) => {
+const EmergencyButton = ({user, id}) => {    
+
 
     const router = useRouter();
     const plateNumber = id;
@@ -15,15 +16,15 @@ const EmergencyButton = ({user, id}) => {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    user: user,
+                    user: user.name,
                     plateNumber: plateNumber
                 })
             
             });
             if(res.ok) {
 
-                alert('Emergency button pressed');
-                router.push('/driverProfile');
+                alert('Emergency sbutton clicked');
+                router.refresh();
             }
 
         }

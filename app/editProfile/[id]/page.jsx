@@ -19,7 +19,7 @@ const page = async ({params}) => {
   return (
     <div className=" flex flex-col gap-4 bg-blue-950 bg-cover bg-no-repeat bg-center bg-fixed"   style={{backgroundImage: `url("/wallpaper2.jpg")`}}>
     <Nav/>
-    <ProfileForm email={user.user.email} name={user.user.name} phone={user.user.phone} address={user.user.address} city={user.user.city} state={user.user.state}/>
+    <ProfileForm nextOfKin = {user.user.nextOfKin} profileImage={user.user.image} email={user.user.email} name={user.user.name} phone={user.user.phone} address={user.user.address} city={user.user.city} state={user.user.state}/>
     </div>
   )
 }

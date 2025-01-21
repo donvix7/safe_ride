@@ -1,7 +1,7 @@
 import React from 'react'
-import Provider from '@/components/provider'
 import Nav from '@/components/nav'
 import "./globals.css";
+import Provider from '../components/provider';
 
 export const metadata = {
     title: "Saferide",

@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaAngleRight, FaList } from "react-icons/fa";
 import ReviewForm from "@/components/ReviewForm";
+import QRCodeForm from "../../../components/QRCodeForm";
 
 
 export default async function DriverProfile({params}) {
@@ -12,7 +13,7 @@ export default async function DriverProfile({params}) {
     
         const session = await getServerSession(NextAuthOptions);
     
-        const user = session.user.name;
+        const user = session.user;
         
 const getDriver = async () => {
 
@@ -29,6 +30,7 @@ const getDriver = async () => {
     }
 }
     const driver = await getDriver();
+
 
     if(!driver.driver){
             
@@ -83,6 +85,7 @@ const getDriver = async () => {
                     <ReviewForm id = {id} />
                 </div>
             </section>
+            <QRCodeForm driver = {driver}/>
             <EmergencyButton user = {user} id = {id} />
         </div>
     )

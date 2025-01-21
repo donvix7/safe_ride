@@ -1,22 +1,28 @@
+import { UploadImage } from "@/lib/uploadImage";
 import User from "@/models/user";
 import connectToDb from "@/utils/connection";
 import { NextResponse } from "next/server";
 
+
 export async function PUT(request, {params}) {
+    
+    const {newNextOfKin: nextOfKin, image:image, newName: name, newEmail: email, newPhone: phone, newAddress: address, newCity: city, newState: state } = await request.json();; // Corrected this line
+
     const {id} = params;
-    const { newName: name, newEmail: email, newPhone: phone, newAddress: address, newCity: city, newState: state } = await request.json(); // Corrected this line
+    
 
     const user = await User.findOne({email: id});
+    //console.log(user);
     if (!user) {
         return NextResponse.json({ message: "User not found" }, { status: 404 });
     }
     
-    const userId = user._id;
 
+    const userId = user._id;
     await connectToDb();
 
     try {
-        await User.findByIdAndUpdate(userId, {name, phone, email, address, city, state});
+        await User.findByIdAndUpdate(userId, {nextOfKin, image, name, phone, email, address, city, state});
         return NextResponse.json({message: "Profile updated"}, {status: 200});
     } catch (error) {
         return NextResponse.json({message: "Error updating profile", error: error.message}, {status: 500});
